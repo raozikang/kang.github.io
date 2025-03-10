@@ -5,47 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我的个人主页</title>
     <style>
+        /* 全局样式 */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             color: #333;
+            line-height: 1.6;
         }
+
+        /* 头部 */
         header {
-            background-color: #4CAF50;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
-            padding: 20px;
+            padding: 60px 20px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin: 10px 0 0;
+        }
+
+        /* 导航栏 */
         nav {
             display: flex;
             justify-content: center;
             background-color: #333;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         nav a {
             color: white;
-            padding: 14px 20px;
+            padding: 10px 20px;
             text-decoration: none;
-            text-align: center;
+            font-size: 1rem;
+            transition: background 0.3s ease;
         }
+
         nav a:hover {
             background-color: #575757;
+            border-radius: 5px;
         }
+
+        /* 内容部分 */
         .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            background: white;
             padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .about, .projects, .contact {
-            margin-bottom: 20px;
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #2575fc;
         }
+
+        section p {
+            font-size: 1rem;
+            margin: 10px 0;
+        }
+
+        section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        section ul li {
+            margin: 10px 0;
+        }
+
+        section ul li a {
+            color: #2575fc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        section ul li a:hover {
+            color: #6a11cb;
+        }
+
+        /* 页脚 */
         footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav a {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 0 10px;
+            }
         }
     </style>
 </head>
@@ -63,28 +157,28 @@
 </nav>
 
 <div class="container">
-    <section id="about" class="about">
+    <section id="about">
         <h2>关于我</h2>
-        <p>你好！我是[你的名字]，一名[你的职业]。我热爱[你的兴趣爱好]，并且一直在学习和提升自己的技能。</p>
+        <p>你好！我是[你的名字]，一名[你的职业]。我热爱[你的兴趣爱好]，并且一直在学习和提升自己的技能。我专注于[你的专业领域]，致力于创造有意义且高效的工作成果。</p>
     </section>
 
-    <section id="projects" class="projects">
+    <section id="projects">
         <h2>我的项目</h2>
-        <p>这里展示了我的一些项目。你可以点击查看详细信息。</p>
+        <p>以下是我参与的一些项目，点击查看详细信息：</p>
         <ul>
-            <li><a href="#">项目1</a></li>
-            <li><a href="#">项目2</a></li>
-            <li><a href="#">项目3</a></li>
+            <li><a href="#">项目1：一个创新的Web应用</a></li>
+            <li><a href="#">项目2：移动端开发项目</a></li>
+            <li><a href="#">项目3：数据分析与可视化</a></li>
         </ul>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact">
         <h2>联系我</h2>
         <p>如果你有任何问题或想与我合作，请通过以下方式联系我：</p>
         <ul>
-            <li>邮箱: [你的邮箱]</li>
-            <li>电话: [你的电话]</li>
-            <li>社交媒体: [你的社交媒体链接]</li>
+            <li>邮箱: <a href="mailto:your.email@example.com">your.email@example.com</a></li>
+            <li>电话: <a href="tel:+1234567890">+123 456 7890</a></li>
+            <li>社交媒体: <a href="https://twitter.com/yourprofile" target="_blank">Twitter</a>, <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
         </ul>
     </section>
 </div>
