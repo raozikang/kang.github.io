@@ -1,23 +1,97 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="zh-CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lucky</title>
+    <title>我的个人主页</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .container {
+            padding: 20px;
+        }
+        .about, .projects, .contact {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
-    <iframe 
-        src="http://112.113.58.125:5670" 
-        width="100%" 
-        height="100%" 
-        frameborder="0"
-    ></iframe>
+
+<header>
+    <h1>欢迎来到我的个人主页</h1>
+    <p>我是[你的名字]，一名[你的职业]</p>
+</header>
+
+<nav>
+    <a href="#about">关于我</a>
+    <a href="#projects">项目</a>
+    <a href="#contact">联系我</a>
+</nav>
+
+<div class="container">
+    <section id="about" class="about">
+        <h2>关于我</h2>
+        <p>你好！我是[你的名字]，一名[你的职业]。我热爱[你的兴趣爱好]，并且一直在学习和提升自己的技能。</p>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>我的项目</h2>
+        <p>这里展示了我的一些项目。你可以点击查看详细信息。</p>
+        <ul>
+            <li><a href="#">项目1</a></li>
+            <li><a href="#">项目2</a></li>
+            <li><a href="#">项目3</a></li>
+        </ul>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>联系我</h2>
+        <p>如果你有任何问题或想与我合作，请通过以下方式联系我：</p>
+        <ul>
+            <li>邮箱: [你的邮箱]</li>
+            <li>电话: [你的电话]</li>
+            <li>社交媒体: [你的社交媒体链接]</li>
+        </ul>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2025 [你的名字]. 保留所有权利。</p>
+</footer>
+
 </body>
 </html>
