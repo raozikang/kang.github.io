@@ -2,29 +2,74 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>动态加载示例</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态加载全屏显示</title>
     <style>
+        /* 重置默认样式 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+
+        /* 全屏容器 */
         #content-container {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 90vh;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            height: 100%;
             overflow: auto;
+            border: none;
+        }
+
+        /* 加载提示 */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2em;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>动态加载示例</h1>
-    <div id="content-container">加载中...</div>
+    <!-- 加载提示 -->
+    <div class="loading">加载中，请稍候...</div>
+
+    <!-- 动态内容容器 -->
+    <div id="content-container"></div>
+
     <script>
-        fetch('https://目标网站地址')
-            .then(response => response.text())
+        // 目标网站地址
+        const targetUrl = 'http://www.baidu.com';
+
+        // 动态加载内容
+        fetch(targetUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应异常');
+                }
+                return response.text();
+            })
             .then(data => {
+                // 将内容插入容器
                 document.getElementById('content-container').innerHTML = data;
+                document.querySelector('.loading').style.display = 'none'; // 隐藏加载提示
             })
             .catch(error => {
-                document.getElementById('content-container').innerHTML = '加载失败，请检查控制台';
-                console.error(error);
+                // 错误处理
+                document.getElementById('content-container').innerHTML = `
+                    <div style="text-align: center; margin-top: 50px;">
+                        <h2>加载失败</h2>
+                        <p>${error.message}</p>
+                        <a href="${targetUrl}" target="_blank">点击访问原网站</a>
+                    </div>
+                `;
+                document.querySelector('.loading').style.display = 'none'; // 隐藏加载提示
             });
     </script>
 </body>
