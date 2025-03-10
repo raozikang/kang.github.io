@@ -1,70 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html style="height: 100%; margin: 0; padding: 0;">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>动态加载全屏显示</title>
+    <meta charset="UTF-8">
+    <title>全屏iframe示例</title>
     <style>
-        html, body {
+        /* 通用样式重置 */
+        body, html {
+            height: 100%;
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
+            overflow: hidden;  /* 隐藏滚动条 */
         }
-        #content-container {
-            position: absolute;
+        
+        /* iframe容器样式 */
+        #iframe-container {
+            width: 100vw;     /* 视口宽度100% */
+            height: 100vh;     /* 视口高度100% */
+            position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            border: none;
-        }
-        .loading {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 1.2em;
-            color: #666;
+            border: none;      /* 去除边框 */
         }
     </style>
 </head>
 <body>
-    <div class="loading">加载中，请稍候...</div>
-    <div id="content-container"></div>
-
-    <script>
-        // 模拟 Eruda 注入的全局变量
-        window.__eruda = true;
-
-        // 修复缺失的依赖
-        if (!window.Promise) {
-            window.Promise = Promise;
-        }
-
-        // 动态加载内容
-        const targetUrl = 'http://www.baidu.com';
-        const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // 代理服务器
-
-        fetch(proxyUrl + targetUrl)
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('content-container').innerHTML = data;
-                document.querySelector('.loading').style.display = 'none';
-            })
-            .catch(error => {
-                console.error('加载失败:', error);
-                document.getElementById('content-container').innerHTML = `
-                    <div style="text-align: center; margin-top: 50px;">
-                        <h2>加载失败</h2>
-                        <p>${error.message}</p>
-                        <a href="${targetUrl}" target="_blank">点击访问原网站</a>
-                    </div>
-                `;
-                document.querySelector('.loading').style.display = 'none';
-            });
-    </script>
+    <iframe 
+        id="iframe-container"
+        src="http://www.baidu.com"
+        frameborder="0"
+        scrolling="auto"  /* 允许滚动 */
+        allowfullscreen   /* 允许全屏模式 */
+    ></iframe>
 </body>
 </html>
